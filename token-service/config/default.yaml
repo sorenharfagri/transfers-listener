@@ -1,0 +1,13 @@
+service:
+  name: "Token Service"
+  production: false
+
+http:
+  port: 80
+
+logger:
+  log_level: "debug"
+
+jaeger:
+  host: "localhost"
+  port: 16686

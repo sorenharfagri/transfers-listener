@@ -1,0 +1,5 @@
+logger:
+  log_level: "debug"
+
+provider:
+  url: "wss://eth-mainnet.g.alchemy.com/v2/qktFF6Q4-EDqhf2qitpa0Xb698szg2Nc"

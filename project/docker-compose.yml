@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  token-service-modules:
+    build:
+      context: ./../token-service
+      dockerfile: ./../token-service/token-service-modules.dockerfile
+
+  token-service:
+    build:
+      context: ./../token-service
+      dockerfile: ./../token-service/token-service.dockerfile
+    restart: always
+    environment:
+      JAEGER_HOST: 'localhost'
+      JAEGER_PORT: '16686'
+    ports:
+      - "80:80"
+    depends_on:
+      - jaeger
+      
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - 5775:5775/udp
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 5778:5778
+      - 16686:16686
+      - 14268:14268
+      - 9411:9411
